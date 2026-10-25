@@ -1,0 +1,22 @@
+node_modules/
+.env
+.env.local
+.DS_Store
+Thumbs.db
+*.log
+dist/
+build/
+coverage/
+.vscode/
+.idea/
+*.zip
+
+# Vite build output (web/ → ../site)
+site/
+
+# TypeScript incremental build info
+*.tsbuildinfo
+
+# Local ffmpeg scratch from video-build/
+video-build/out/seg_*.mp4
+video-build/concat_*.txt

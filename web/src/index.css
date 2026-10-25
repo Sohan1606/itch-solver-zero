@@ -1,0 +1,70 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ---------------------------------------------------------------
+   Self-hosted fonts.
+   The remote <link> tags in index.html / app.html are the spec'd
+   sources; these local @font-face rules are declared afterwards so
+   the site still renders with the real typefaces offline and inside
+   a sandboxed preview (no network).
+   --------------------------------------------------------------- */
+
+@font-face {
+  font-family: 'P22 Mackinac W01 Book';
+  src:
+    url('/fonts/mackinac.woff2') format('woff2'),
+    url('/fonts/mackinac.ttf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+  font-display: block;
+}
+
+@font-face {
+  font-family: 'Inter';
+  src: url('/fonts/inter-var.woff2') format('woff2');
+  font-weight: 100 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@layer base {
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    font-family: 'Inter', sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    background: #ffffff;
+    color: #191919;
+  }
+
+  ::selection {
+    background: #191919;
+    color: #ffffff;
+  }
+}
+
+@layer utilities {
+  /* Keeps the boomerang canvas from flashing while the first frames paint. */
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}
+
+/* Respect reduced-motion: the video still plays once, but the UI
+   transitions are removed. */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    transition-duration: 0.01ms !important;
+    animation-duration: 0.01ms !important;
+  }
+}
